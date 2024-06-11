@@ -25,7 +25,7 @@ const OrderItemCard = ({ order }: Props) => {
   useEffect(() => {
     setStatus(order.status);
   }, [order.status]);
-
+// console.log(order.totalAmount)
   const handleStatusChange = async (newStatus: OrderStatus) => {
     await updateRestaurantStatus({
       orderId: order._id as string,
@@ -77,7 +77,7 @@ const OrderItemCard = ({ order }: Props) => {
       <CardContent className="flex flex-col gap-6">
         <div className="flex flex-col gap-2">
           {order.cartItems.map((cartItem) => (
-            <span>
+            <span key={cartItem.name}>
               <Badge variant="outline" className="mr-2">
                 {cartItem.quantity}
               </Badge>
